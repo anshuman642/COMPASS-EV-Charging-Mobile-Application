@@ -41,11 +41,39 @@ function App() {
   const [selectedCharger, setSelectedCharger] =
     useState("DC Fast Charger");
 
-  const [selectedDate, setSelectedDate] =
-    useState("25");
+  const now = new Date();
 
-  const [selectedTime, setSelectedTime] =
-    useState("10:00 AM");
+  // Local date in YYYY-MM-DD format for the date input.
+  const localToday = `${now.getFullYear()}-${String(
+    now.getMonth() + 1
+  ).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
+
+  const [selectedDate, setSelectedDate] = useState(localToday);
+  const [selectedTime, setSelectedTime] = useState("10:00");
+
+  const formatSelectedDate = (dateValue) => {
+    if (!dateValue) return "";
+
+    return new Date(`${dateValue}T00:00:00`).toLocaleDateString("en-IN", {
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+    });
+  };
+
+  const formatSelectedTime = (timeValue) => {
+    if (!timeValue) return "";
+
+    const [hours, minutes] = timeValue.split(":");
+    const date = new Date();
+    date.setHours(Number(hours), Number(minutes), 0, 0);
+
+    return date.toLocaleTimeString("en-IN", {
+      hour: "numeric",
+      minute: "2-digit",
+      hour12: true,
+    });
+  };
 
   // =========================
   // PAYMENT STATE
@@ -607,145 +635,32 @@ function App() {
 
           {/* DATE */}
 
-          <div className="booking-section">
+         <div className="booking-section">
+  <h2>Select Date</h2>
 
-            <h2>
-              Select Date
-            </h2>
-
-            <div className="date-options">
-
-              {/* TODAY */}
-
-              <button
-                className={`date-option ${
-                  selectedDate === "25"
-                    ? "selected"
-                    : ""
-                }`}
-                onClick={() =>
-                  setSelectedDate("25")
-                }
-              >
-                <strong>
-                  25
-                </strong>
-
-                <span>
-                  Today
-                </span>
-
-              </button>
-
-              {/* TOMORROW */}
-
-              <button
-                className={`date-option ${
-                  selectedDate === "26"
-                    ? "selected"
-                    : ""
-                }`}
-                onClick={() =>
-                  setSelectedDate("26")
-                }
-              >
-                <strong>
-                  26
-                </strong>
-
-                <span>
-                  Tomorrow
-                </span>
-
-              </button>
-
-              {/* DAY AFTER */}
-
-              <button
-                className={`date-option ${
-                  selectedDate === "27"
-                    ? "selected"
-                    : ""
-                }`}
-                onClick={() =>
-                  setSelectedDate("27")
-                }
-              >
-                <strong>
-                  27
-                </strong>
-
-                <span>
-                  Sun
-                </span>
-
-              </button>
-
-            </div>
-
-          </div>
+  <div className="date-picker-wrapper">
+    <input
+      type="date"
+      value={selectedDate}
+      min={localToday}
+      onChange={(e) => setSelectedDate(e.target.value)}
+    />
+  </div>
+</div>
 
           {/* TIME */}
 
           <div className="booking-section">
+  <h2>Select Time</h2>
 
-            <h2>
-              Select Time
-            </h2>
-
-            <div className="time-options">
-
-              <button
-                className={`time-option ${
-                  selectedTime ===
-                  "10:00 AM"
-                    ? "selected"
-                    : ""
-                }`}
-                onClick={() =>
-                  setSelectedTime(
-                    "10:00 AM"
-                  )
-                }
-              >
-                10:00 AM
-              </button>
-
-              <button
-                className={`time-option ${
-                  selectedTime ===
-                  "11:00 AM"
-                    ? "selected"
-                    : ""
-                }`}
-                onClick={() =>
-                  setSelectedTime(
-                    "11:00 AM"
-                  )
-                }
-              >
-                11:00 AM
-              </button>
-
-              <button
-                className={`time-option ${
-                  selectedTime ===
-                  "12:00 PM"
-                    ? "selected"
-                    : ""
-                }`}
-                onClick={() =>
-                  setSelectedTime(
-                    "12:00 PM"
-                  )
-                }
-              >
-                12:00 PM
-              </button>
-
-            </div>
-
-          </div>
+  <div className="time-picker-wrapper">
+    <input
+      type="time"
+      value={selectedTime}
+      onChange={(e) => setSelectedTime(e.target.value)}
+    />
+  </div>
+</div>
 
           {/* SUMMARY */}
 
@@ -767,7 +682,7 @@ function App() {
               </span>
 
               <strong>
-                {selectedDate} September 2026
+                {formatSelectedDate(selectedDate)}
               </strong>
             </div>
 
@@ -777,7 +692,7 @@ function App() {
               </span>
 
               <strong>
-                {selectedTime}
+                {formatSelectedTime(selectedTime)}
               </strong>
             </div>
 
@@ -871,8 +786,8 @@ function App() {
               </span>
 
               <strong>
-                {selectedDate} September 2026,{" "}
-                {selectedTime}
+                {formatSelectedDate(selectedDate)},{" "}
+                {formatSelectedTime(selectedTime)}
               </strong>
             </div>
 
@@ -1459,7 +1374,7 @@ function App() {
   if (page === "signup") {
     return (
       <div className="app">
-        <div className="phone-screen login-screen">
+        <div className="phone-screen signup-screen">
 
           <div className="login-header">
 
