@@ -1,16 +1,67 @@
-# React + Vite
+# COMPASS – EV Charging Mobile Application ⚡
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+> EV Charging, Simplified.
 
-Currently, two official plugins are available:
+COMPASS is a frontend-focused EV charging mobile application designed to simplify the complete EV charging journey — from discovering a charging station to booking a charger, monitoring the charging session, and completing payment.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 🎯 Project Overview
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+EV users often need to manage multiple steps while charging their vehicles, including finding nearby stations, checking availability, understanding charging options, booking a charger, monitoring charging progress, and completing payment.
 
-## Expanding the Oxlint configuration
+COMPASS brings these interactions together into a simple and consistent mobile experience.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+### Core Journey
+
+**Find → Compare → Book → Charge → Pay**
+
+---
+
+## 🚀 Key Features
+
+- 📱 User onboarding
+- 🔐 Login and Sign Up
+- 🏠 Personalized Home screen
+- 🗺️ Charging station map
+- 📍 Nearby charging stations
+- ⚡ Station details
+- 🔌 Charger selection
+- 📅 Date and time selection
+- ✅ Booking confirmation
+- 🔋 Charging session monitoring
+- 💳 Multiple payment methods
+- 🎉 Payment success screen
+- 👤 User profile
+- 📱 Mobile-focused responsive interface
+
+---
+
+## 👤 User Experience
+
+The application is designed around a simple user journey:
+
+```text
+Onboarding
+    ↓
+Login / Sign Up
+    ↓
+Home
+    ↓
+Find Charging Station
+    ↓
+Station Details
+    ↓
+Book Charger
+    ↓
+Select Charger
+    ↓
+Select Date & Time
+    ↓
+Booking Confirmation
+    ↓
+Charging Session
+    ↓
+Payment
+    ↓
+Payment Successful
