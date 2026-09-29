@@ -1,6 +1,6 @@
 # COMPASS – EV Charging Mobile Application ⚡
 
-> EV Charging, Simplified.
+EV Charging, Simplified.
 
 COMPASS is a frontend-focused EV charging mobile application designed to simplify the complete EV charging journey — from discovering a charging station to booking a charger, monitoring the charging session, and completing payment.
 
